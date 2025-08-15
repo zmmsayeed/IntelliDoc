@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0d6efd" />
+    <meta
+      name="description"
+      content="IntelliDoc - AI-Powered Document Intelligence Platform. Transform unstructured documents into actionable business intelligence."
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <title>IntelliDoc - AI-Powered Document Intelligence</title>
+    
+    <style>
+      :root {
+        --bs-primary: #0d6efd;
+        --bs-secondary: #6c757d;
+        --bs-success: #198754;
+        --bs-info: #0dcaf0;
+        --bs-warning: #ffc107;
+        --bs-danger: #dc3545;
+        --bs-light: #f8f9fa;
+        --bs-dark: #212529;
+        --bs-white: #ffffff;
+        --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        --gradient-success: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        --shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        --shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        --shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+      }
+      
+      /* Light theme (default) */
+      body, [data-theme="light"] {
+        --bs-body-bg: #ffffff;
+        --bs-body-color: #212529;
+        --bs-light: #f8f9fa;
+        --bs-dark: #212529;
+        --navbar-bg: rgba(255, 255, 255, 0.95);
+        --sidebar-bg: rgba(255, 255, 255, 0.98);
+        --card-bg: #ffffff;
+        --border-color: rgba(0, 0, 0, 0.1);
+        --text-muted: #6c757d;
+        background-color: var(--bs-body-bg) !important;
+        color: var(--bs-body-color) !important;
+      }
+      
+      /* Dark theme */
+      [data-theme="dark"] {
+        --bs-body-bg: #121212;
+        --bs-body-color: #ffffff;
+        --bs-light: #2d2d2d;
+        --bs-dark: #121212;
+        --navbar-bg: rgba(33, 37, 41, 0.95);
+        --sidebar-bg: rgba(33, 37, 41, 0.98);
+        --card-bg: #1e1e1e;
+        --border-color: rgba(255, 255, 255, 0.1);
+        --text-muted: #adb5bd;
+        background-color: var(--bs-body-bg) !important;
+        color: var(--bs-body-color) !important;
+      }
+      
+      [data-theme="dark"] .bg-light {
+        background-color: var(--bs-light) !important;
+      }
+      
+      [data-theme="dark"] .bg-white {
+        background-color: var(--card-bg) !important;
+      }
+      
+      [data-theme="dark"] .text-dark {
+        color: var(--bs-body-color) !important;
+      }
+      
+      [data-theme="dark"] .text-muted {
+        color: var(--text-muted) !important;
+      }
+      
+      [data-theme="dark"] .card {
+        background-color: var(--card-bg) !important;
+        border-color: var(--border-color) !important;
+      }
+      
+      [data-theme="dark"] .navbar-glass {
+        background: var(--navbar-bg) !important;
+        border-bottom: 1px solid var(--border-color) !important;
+      }
+      
+      [data-theme="dark"] .sidebar-glass {
+        background: var(--sidebar-bg) !important;
+      }
+      
+      [data-theme="dark"] .border-light {
+        border-color: var(--border-color) !important;
+      }
+      
+      [data-theme="dark"] .dropdown-menu {
+        background-color: var(--card-bg) !important;
+        border-color: var(--border-color) !important;
+      }
+      
+      [data-theme="dark"] .dropdown-item {
+        color: var(--bs-body-color) !important;
+      }
+      
+      [data-theme="dark"] .dropdown-item:hover {
+        background-color: var(--bs-light) !important;
+      }
+      
+      [data-theme="dark"] .form-control {
+        background-color: var(--card-bg) !important;
+        border-color: var(--border-color) !important;
+        color: var(--bs-body-color) !important;
+      }
+      
+      [data-theme="dark"] .form-control:focus {
+        background-color: var(--card-bg) !important;
+        border-color: var(--bs-primary) !important;
+        color: var(--bs-body-color) !important;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25) !important;
+      }
+      
+      [data-theme="dark"] .btn-outline-secondary {
+        color: var(--bs-body-color) !important;
+        border-color: var(--border-color) !important;
+      }
+      
+      [data-theme="dark"] .btn-outline-secondary:hover {
+        background-color: var(--bs-light) !important;
+        color: var(--bs-body-color) !important;
+      }
+      
+      [data-theme="dark"] .offcanvas {
+        background-color: var(--card-bg) !important;
+        color: var(--bs-body-color) !important;
+      }
+      
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+        line-height: 1.6;
+        font-weight: 400;
+        letter-spacing: -0.01em;
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+      
+      .text-gradient-primary {
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      
+      .bg-gradient-primary {
+        background: var(--gradient-primary);
+      }
+      
+      .bg-gradient-secondary {
+        background: var(--gradient-secondary);
+      }
+      
+      .bg-gradient-success {
+        background: var(--gradient-success);
+      }
+      
+      .card-hover {
+        transition: all 0.3s ease;
+      }
+      
+      .card-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-lg);
+      }
+      
+      .btn-gradient-primary {
+        background: var(--gradient-primary);
+        border: none;
+        color: white;
+        transition: all 0.3s ease;
+      }
+      
+      .btn-gradient-primary:hover {
+        background: linear-gradient(135deg, #5a67d8 0%, #667eea 100%);
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: var(--shadow);
+      }
+      
+      .btn-gradient-secondary {
+        background: var(--gradient-secondary);
+        border: none;
+        color: white;
+        transition: all 0.3s ease;
+      }
+      
+      .btn-gradient-secondary:hover {
+        background: linear-gradient(135deg, #e084fc 0%, #f4506c 100%);
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: var(--shadow);
+      }
+      
+      .navbar-glass {
+        backdrop-filter: blur(10px);
+        background: var(--navbar-bg) !important;
+        border-bottom: 1px solid var(--border-color);
+        transition: all 0.3s ease;
+      }
+      
+      .sidebar-glass {
+        backdrop-filter: blur(10px);
+        background: var(--sidebar-bg) !important;
+        transition: all 0.3s ease;
+      }
+      
+      .animate-fade-in {
+        animation: fadeIn 0.6s ease-in-out;
+      }
+      
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      
+      .loading-spinner {
+        width: 1.5rem;
+        height: 1.5rem;
+        border: 2px solid rgba(13, 110, 253, 0.2);
+        border-top: 2px solid #0d6efd;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        display: inline-block;
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      
+      /* Card and component styling transitions */
+      .card, .navbar, .offcanvas, .dropdown-menu, .form-control, .btn {
+        transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+      }
+      
+      /* Fix navbar dropdown arrow alignment */
+      .navbar .dropdown-toggle {
+        display: flex !important;
+        align-items: center !important;
+        text-decoration: none !important;
+      }
+      
+      .navbar .dropdown-toggle::after {
+        margin-left: auto !important;
+        margin-right: 0 !important;
+      }
+      
+      /* Ensure dropdown arrow is properly positioned */
+      .navbar-nav .nav-link.dropdown-toggle {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        white-space: nowrap !important;
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  </body>
+</html>
